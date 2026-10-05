@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
-    "better-sqlite3": "^13.0.3",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
@@ -30,6 +29,6 @@
   "description": "Zippy - a full-stack quick-commerce grocery app (React, Express, SQLite, Razorpay test mode, live order tracking)",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.5"
   }
 }

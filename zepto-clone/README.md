@@ -50,13 +50,13 @@ A full-stack quick-commerce web app in the style of Zepto/Blinkit: browse, searc
 |---|---|
 | Frontend | React 18, React Router, Vite, Leaflet (OpenStreetMap), plain CSS |
 | Backend | Node.js, Express 5, Server-Sent Events |
-| Database | SQLite (better-sqlite3), transactions for orders and stock |
+| Database | SQLite (built-in node:sqlite), transactions for orders and stock |
 | Auth | JWT + bcrypt |
 | Payments | Razorpay Orders API + Checkout (test mode) |
 | Tests | End-to-end API tests (`npm test`) including a fake Razorpay server and a live-tracking stream test |
 
 ## Run it locally
-Needs Node.js 18+.
+Needs Node.js 22.5+.
 
 ```bash
 git clone <your-repo-url> && cd zippy
