@@ -4,6 +4,8 @@ import { useCart } from '../CartContext'
 import { useAuth } from '../AuthContext'
 import { useConfig } from '../ConfigContext'
 import { get } from '../api'
+import LocationModal from './LocationModal'
+import { useDeliveryLocation } from '../useDeliveryLocation'
 
 export default function Navbar({ onCart, onVoice }) {
   const { count, total } = useCart()
@@ -16,6 +18,8 @@ export default function Navbar({ onCart, onVoice }) {
   const nav = useNavigate()
   const loc = useLocation()
   const timer = useRef()
+  const [locOpen, setLocOpen] = useState(false)
+  const place = useDeliveryLocation()
 
   useEffect(() => { if (loc.pathname === '/') setQ(params.get('q') || '') }, [params, loc.pathname])
   const onSearch = (e) => {
@@ -29,7 +33,8 @@ export default function Navbar({ onCart, onVoice }) {
     <header className="navbar">
       <div className="container nav-inner">
         <Link to="/" className="logo">zippy<span>⚡</span></Link>
-        <div className="delivery"><b>⏱ 10 minutes</b><small>Koramangala, Bengaluru ▾</small></div>
+        <button className="delivery" onClick={() => setLocOpen(true)} title="Change delivery location"><b>⏱ 10 minutes</b><small>{place.area}, Bengaluru ▾</small></button>
+        {locOpen && <LocationModal onClose={() => setLocOpen(false)} />}
         <div className="search-wrap" onBlur={() => setTimeout(() => setSugg([]), 150)}>
           <input className="search" placeholder='Search "milk", "chips"...' value={q} onChange={onSearch} />
           {sugg.length > 0 && (
